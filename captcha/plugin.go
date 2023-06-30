@@ -84,3 +84,14 @@ func Create(key string, num int, t captcha2.StrType) (*captcha2.Image, error) {
 	}
 	return img, nil
 }
+
+func Verify(key string, code string) bool {
+	value, err := storage.Get(key, true)
+	if err != nil {
+		return false
+	}
+	if value == code {
+		return true
+	}
+	return false
+}

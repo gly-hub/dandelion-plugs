@@ -2,12 +2,11 @@ module github.com/gly-hub/dandelion-plugs
 
 go 1.20
 
-replace github.com/gly-hub/toolbox v0.0.0 => ../toolbox
-
 require (
 	github.com/gly-hub/go-dandelion v1.2.0
-	github.com/gly-hub/toolbox v0.0.0
+	github.com/gly-hub/toolbox v0.0.0-20230630033711-eed848af98e0
 	github.com/gomodule/redigo v1.8.9
+	github.com/patrickmn/go-cache v2.1.0+incompatible
 )
 
 require (
@@ -77,7 +76,6 @@ require (
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/onsi/ginkgo/v2 v2.9.0 // indirect
 	github.com/opentracing/opentracing-go v1.1.0 // indirect
-	github.com/patrickmn/go-cache v2.1.0+incompatible // indirect
 	github.com/pelletier/go-toml/v2 v2.0.6 // indirect
 	github.com/petermattis/goid v0.0.0-20230317030725-371a4b8eda08 // indirect
 	github.com/philhofer/fwd v1.1.2 // indirect

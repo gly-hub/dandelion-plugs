@@ -162,6 +162,8 @@ github.com/gly-hub/fasthttp-routing v0.0.0-20230103092213-f65d0ebb75bb h1:zowBxK
 github.com/gly-hub/fasthttp-routing v0.0.0-20230103092213-f65d0ebb75bb/go.mod h1:+Y557LGCG89Q4TwIdXw3NF/HJqNjlxz+mT4VmC5uX+E=
 github.com/gly-hub/go-dandelion v1.2.0 h1:dkpK8Q8UruwjLyr6Zg/ZoQYTIb6X1XX9zOQGN7gG5mY=
 github.com/gly-hub/go-dandelion v1.2.0/go.mod h1:0BxEK4juCpYl2dzf5ne+B21apDJE+UiKNW3iCcBFjsQ=
+github.com/gly-hub/toolbox v0.0.0-20230630033711-eed848af98e0 h1:8ArvogRr+vjLRMUttVOQTolCv5Ni1hu4cH2b3kL9rDY=
+github.com/gly-hub/toolbox v0.0.0-20230630033711-eed848af98e0/go.mod h1:EovGQG+Jn6YtAQ8dE79woehqZZJN4nAA93tjmwysAWQ=
 github.com/go-gl/glfw v0.0.0-20190409004039-e6da0acd62b1/go.mod h1:vR7hzQXu2zJy9AVAgeJqvqgH9Q5CA+iKCZ2gyEVpxRU=
 github.com/go-gl/glfw/v3.3/glfw v0.0.0-20191125211704-12ad95a8df72/go.mod h1:tQ2UAYgL5IevRw8kRxooKSPJfGvJ9fJQFa0TUsXzTg8=
 github.com/go-gl/glfw/v3.3/glfw v0.0.0-20200222043503-6f7a984d4dc4/go.mod h1:tQ2UAYgL5IevRw8kRxooKSPJfGvJ9fJQFa0TUsXzTg8=
