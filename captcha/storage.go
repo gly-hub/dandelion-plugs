@@ -16,10 +16,10 @@ type Storage struct {
 func (s *Storage) Set(key string, value string) (err error) {
 	switch s.s.(type) {
 	case *cache.Cache:
-		s.s.(*cache.Cache).Set(key, value, 5*time.Minute)
+		s.s.(*cache.Cache).Set(key, value, time.Duration(Config.Captcha.Expire)*time.Second)
 	case *redigo.Client:
 		_, err = s.s.(*redigo.Client).Execute(func(c redis.Conn) (res interface{}, err error) {
-			return c.Do("set", key, value, "EX", 60*5)
+			return c.Do("set", key, value, "EX", Config.Captcha.Expire)
 		})
 	}
 	return err

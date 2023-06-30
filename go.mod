@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/gly-hub/go-dandelion v1.2.0
-	github.com/gly-hub/toolbox v0.0.0-20230630033711-eed848af98e0
+	github.com/gly-hub/toolbox v0.0.0-20230630080251-549cc05ae707
 	github.com/gomodule/redigo v1.8.9
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 )

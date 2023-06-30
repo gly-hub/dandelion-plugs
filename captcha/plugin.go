@@ -13,11 +13,18 @@ var (
 )
 
 type config struct {
+	Captcha captchaConfig `json:"captcha" yaml:"captcha"`
+}
+
+type captchaConfig struct {
+	Length       int      `json:"length" yaml:"length"`
+	StrType      int      `json:"str_type" yaml:"strType"`
 	Size         Size     `json:"size" yaml:"size"`
 	FrontColors  []Color  `json:"front_colors" yaml:"frontColors"`
 	BkgColors    []Color  `json:"bkg_colors" yaml:"bkgColors"`
 	FontPath     []string `json:"font_path" yaml:"fontPath"`
 	DisturbLevel string   `json:"disturb_level" yaml:"disturbLevel"`
+	Expire       int      `json:"expire" yaml:"expire"`
 }
 
 type Size struct {
@@ -32,17 +39,21 @@ type Color struct {
 	A uint8 `json:"a" yaml:"a"`
 }
 
-type Plugin struct {
+func Plug() *plugin {
+	return &plugin{}
 }
 
-func (p *Plugin) Config() interface{} {
+type plugin struct {
+}
+
+func (p *plugin) Config() interface{} {
 	Config = &config{}
 	return Config
 }
 
-func (p *Plugin) InitPlugin() error {
+func (p *plugin) InitPlugin() error {
 	customOpt := captcha2.Option{
-		Size:         &image.Point{X: Config.Size.X, Y: Config.Size.Y},
+		Size:         &image.Point{X: Config.Captcha.Size.X, Y: Config.Captcha.Size.Y},
 		FrontColors:  nil,
 		BkgColors:    nil,
 		FontPath:     nil,
@@ -50,20 +61,20 @@ func (p *Plugin) InitPlugin() error {
 	}
 
 	var frontColors []color.Color
-	for _, v := range Config.FrontColors {
+	for _, v := range Config.Captcha.FrontColors {
 		frontColors = append(frontColors, color.RGBA{R: v.R, G: v.G, B: v.B, A: v.A})
 	}
 	customOpt.FrontColors = frontColors
 
 	var bkgColors []color.Color
-	for _, v := range Config.BkgColors {
+	for _, v := range Config.Captcha.BkgColors {
 		bkgColors = append(bkgColors, color.RGBA{R: v.R, G: v.G, B: v.B, A: v.A})
 	}
 	customOpt.BkgColors = bkgColors
 
-	customOpt.FontPath = Config.FontPath
+	customOpt.FontPath = Config.Captcha.FontPath
 
-	switch Config.DisturbLevel {
+	switch Config.Captcha.DisturbLevel {
 	case "normal":
 		customOpt.DisturbLevel = captcha2.NORMAL
 	case "medium":
@@ -72,16 +83,25 @@ func (p *Plugin) InitPlugin() error {
 		customOpt.DisturbLevel = captcha2.HIGH
 	}
 
+	if Config.Captcha.Length == 0 {
+		Config.Captcha.Length = 4
+	}
+
+	if Config.Captcha.Expire == 0 {
+		Config.Captcha.Expire = 300
+	}
+
 	captcha = captcha2.New(customOpt)
 	storage = InitStorage()
 	return nil
 }
 
-func Create(key string, num int, t captcha2.StrType) (*captcha2.Image, error) {
-	img, code := captcha.Create(num, t)
+func Create(key string) (*captcha2.Image, error) {
+	img, code := captcha.Create(Config.Captcha.Length, captcha2.StrType(Config.Captcha.StrType))
 	if err := storage.Set(key, code); err != nil {
 		return nil, err
 	}
+
 	return img, nil
 }
 
