@@ -39,19 +39,19 @@ type Color struct {
 	A uint8 `json:"a" yaml:"a"`
 }
 
-func Plug() *plugin {
-	return &plugin{}
+func Plug() *Plugin {
+	return &Plugin{}
 }
 
-type plugin struct {
+type Plugin struct {
 }
 
-func (p *plugin) Config() interface{} {
+func (p *Plugin) Config() interface{} {
 	Config = &config{}
 	return Config
 }
 
-func (p *plugin) InitPlugin() error {
+func (p *Plugin) InitPlugin() error {
 	customOpt := captcha2.Option{
 		Size:         &image.Point{X: Config.Captcha.Size.X, Y: Config.Captcha.Size.Y},
 		FrontColors:  nil,
