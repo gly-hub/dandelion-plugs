@@ -127,8 +127,8 @@ func ExpireTime(token string) (expireTime int64, err error) {
 	return jwt.ExpireTime(token)
 }
 
-func Del(metadata string) error {
-	return storage.Del(metadata)
+func Del(metadata MetaData) error {
+	return storage.Del(metadata.Unique())
 }
 
 type Storage struct {
