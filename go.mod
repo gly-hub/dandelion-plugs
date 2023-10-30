@@ -3,9 +3,13 @@ module github.com/gly-hub/dandelion-plugs
 go 1.20
 
 require (
-	github.com/gly-hub/toolbox v0.0.0-20230630080251-549cc05ae707
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
+	github.com/gly-hub/toolbox v0.0.0-20230630080251-d1ee57b14759
 	github.com/gomodule/redigo v1.8.9
+	github.com/json-iterator/go v1.1.12
 	github.com/patrickmn/go-cache v2.1.0+incompatible
+	github.com/spf13/cast v1.5.0
+	github.com/team-dandelion/go-dandelion v1.3.0
 )
 
 require (
@@ -56,7 +60,6 @@ require (
 	github.com/jackc/pgx/v5 v5.3.0 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect
-	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/juju/ratelimit v1.0.2 // indirect
 	github.com/julienschmidt/httprouter v1.3.0 // indirect
 	github.com/kavu/go_reuseport v1.5.0 // indirect
@@ -100,7 +103,6 @@ require (
 	github.com/smallnest/rpcx v1.8.7 // indirect
 	github.com/soheilhy/cmux v0.1.5 // indirect
 	github.com/spf13/afero v1.9.3 // indirect
-	github.com/spf13/cast v1.5.0 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/spf13/viper v1.15.0 // indirect
