@@ -2,11 +2,11 @@ package jwt
 
 import (
 	"errors"
-	"github.com/gly-hub/go-dandelion/application"
-	"github.com/gly-hub/go-dandelion/database/redigo"
 	"github.com/gomodule/redigo/redis"
 	"github.com/patrickmn/go-cache"
 	"github.com/spf13/cast"
+	"github.com/team-dandelion/go-dandelion/application"
+	"github.com/team-dandelion/go-dandelion/database/redigo"
 	"strings"
 	"time"
 )

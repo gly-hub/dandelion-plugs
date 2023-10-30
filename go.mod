@@ -3,7 +3,6 @@ module github.com/gly-hub/dandelion-plugs
 go 1.20
 
 require (
-	github.com/gly-hub/go-dandelion v1.2.0
 	github.com/gly-hub/toolbox v0.0.0-20230630080251-549cc05ae707
 	github.com/gomodule/redigo v1.8.9
 	github.com/patrickmn/go-cache v2.1.0+incompatible

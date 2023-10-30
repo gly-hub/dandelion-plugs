@@ -2,10 +2,10 @@ package captcha
 
 import (
 	"errors"
-	"github.com/gly-hub/go-dandelion/application"
-	"github.com/gly-hub/go-dandelion/database/redigo"
 	"github.com/gomodule/redigo/redis"
 	"github.com/patrickmn/go-cache"
+	"github.com/team-dandelion/go-dandelion/application"
+	"github.com/team-dandelion/go-dandelion/database/redigo"
 	"time"
 )
 
