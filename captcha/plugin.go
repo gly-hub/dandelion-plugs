@@ -96,13 +96,13 @@ func (p *Plugin) InitPlugin() error {
 	return nil
 }
 
-func Create(key string) (*captcha2.Image, error) {
+func Create(key string) (*captcha2.Image, string, error) {
 	img, code := captcha.Create(Config.Captcha.Length, captcha2.StrType(Config.Captcha.StrType))
 	if err := storage.Set(key, code); err != nil {
-		return nil, err
+		return nil, "", err
 	}
 
-	return img, nil
+	return img, code, nil
 }
 
 func Verify(key string, code string) bool {
