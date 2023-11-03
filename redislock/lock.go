@@ -61,7 +61,12 @@ func (dl *DistributeLockRedis) tryLock() (err error) {
 // competition 竞争锁
 func (dl *DistributeLockRedis) lock() error {
 	result, err := dl.redis.Bool(func(c redis.Conn) (res interface{}, err error) {
-		return c.Do("SETNX", genKey(dl.key), dl.value, "EX", dl.expire)
+		res, err = c.Do("SETNX", genKey(dl.key), dl.value)
+		if err != nil {
+			return
+		}
+		_, _ = c.Do("EXPIRE", genKey(dl.key), dl.expire)
+		return
 	})
 	if err != nil {
 		return err
