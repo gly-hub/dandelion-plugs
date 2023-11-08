@@ -142,7 +142,9 @@ func (s *Storage) Set(key string, value string) (err error) {
 		s.s.(*cache.Cache).Set(key, value, time.Duration(s.expireTime)*time.Second)
 	case *redigo.Client:
 		_, err = s.s.(*redigo.Client).Execute(func(c redis.Conn) (res interface{}, err error) {
-			return c.Do("set", key, value, "EX", Config.Jwt.ExpireTime)
+			_, err = c.Do("set", key, value)
+			_, err = c.Do("expire", key, s.expireTime)
+			return
 		})
 	}
 	return err
