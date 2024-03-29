@@ -9,7 +9,7 @@ require (
 	github.com/json-iterator/go v1.1.12
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/spf13/cast v1.5.0
-	github.com/team-dandelion/go-dandelion v1.3.0
+	github.com/team-dandelion/go-dandelion v0.0.0-20240329073913-3c1d3ce622c5
 )
 
 require (
