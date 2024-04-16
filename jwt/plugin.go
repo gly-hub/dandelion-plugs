@@ -105,13 +105,13 @@ func Check(token string, metadata MetaData) (err error) {
 	}
 
 	if Config.Jwt.Model == "unique" {
-		if sToken, gErr := storage.Get(metadata.Unique()); gErr == nil || sToken != token {
+		if sToken, gErr := storage.Get(metadata.Unique()); gErr != nil || sToken != token {
 			return errors.New("token is expired")
 		}
 	}
 
 	if Config.Jwt.Model == "refresh" {
-		if sToken, gErr := storage.Get(metadata.Unique()); gErr == nil || sToken != token {
+		if sToken, gErr := storage.Get(metadata.Unique()); gErr != nil || sToken != token {
 			return errors.New("token is expired")
 		}
 		// 刷新缓存中的过期时间
