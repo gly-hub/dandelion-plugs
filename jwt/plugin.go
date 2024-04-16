@@ -49,10 +49,10 @@ func (p *Plugin) InitPlugin() error {
 		Config.Jwt.Key = "jwt-key"
 	}
 
-	var expireTime int64
+	var expireTime int64 = 1
 	if Config.Jwt.ExpireTime != "" {
 		Config.Jwt.ExpireTime = strings.ReplaceAll(Config.Jwt.ExpireTime, " ", "")
-		numList := strings.Split(Config.Jwt.ExpireTime, "")
+		numList := strings.Split(Config.Jwt.ExpireTime, "*")
 		for _, num := range numList {
 			expireTime = expireTime * cast.ToInt64(num)
 		}
@@ -186,7 +186,7 @@ func (s *Storage) Del(key string) (err error) {
 func InitStorage(expireTime int64) *Storage {
 	r := application.Redis{}
 	if db := r.GetRedis(); db != nil {
-		return &Storage{s: db}
+		return &Storage{s: db, expireTime: expireTime}
 	}
 
 	return &Storage{s: cache.New(5*time.Minute, 10*time.Minute), expireTime: expireTime}
